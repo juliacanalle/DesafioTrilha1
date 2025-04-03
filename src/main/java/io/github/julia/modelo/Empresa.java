@@ -1,17 +1,20 @@
+package io.github.julia.modelo;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class Empresa {
+public class Empresa extends Pessoa {
 
-    String nomeFantasia;
     String cnpj;
     List<Colaborador> listaDeColaboradores;
+    List<String> listaDeDepartamentos;
 
-    public Empresa(String nomeFantasia, String cnpj) {
-        this.nomeFantasia = nomeFantasia;
+    public Empresa(String nome, String cnpj) {
+        super(nome);
         this.cnpj = cnpj;
         this.listaDeColaboradores = new ArrayList<>();
+        this.listaDeDepartamentos = new ArrayList<>();
     }
 
     public List<Colaborador> getListaDeColaboradores() {
@@ -19,11 +22,11 @@ public class Empresa {
     }
 
     public String getNomeFantasia() {
-        return nomeFantasia;
+        return nome;
     }
 
     public void setNomeFantasia(String nomeFantasia) {
-        this.nomeFantasia = nomeFantasia;
+        this.nome = nomeFantasia;
     }
 
     public void setCnpj(String cnpj) {
@@ -40,20 +43,13 @@ public class Empresa {
 
     @Override
     public String toString() {
-        return "Empresa: " + nomeFantasia + " | " + "CNPJ: " + cnpj;
+        return "Empresa: " + nome + " | " + "CNPJ: " + cnpj;
     }
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
 
-        //Testes de métodos
-        Empresa empresa1 = new Empresa("Mc Donalds", "123456789");
-        GerenciaColaborador gerente = new GerenciaColaborador(scanner);
-        gerente.cadastrarColaborador(empresa1);
-        gerente.consultaColaborador(empresa1);
-        gerente.atualizarColaborador(empresa1);
-        gerente.removeColaborador(empresa1);
 
     }
 
