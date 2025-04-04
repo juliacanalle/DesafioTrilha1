@@ -1,10 +1,16 @@
 package io.github.julia.repositorios;
 import io.github.julia.modelo.Empresa;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmpresaMemoria {
 
     List<Empresa> listaDeEmpresas;
+
+    public EmpresaMemoria() {
+        this.listaDeEmpresas = new ArrayList<>();
+    }
 
     public void adicionaEmpresa(Empresa empresa) {
         listaDeEmpresas.add(empresa);
@@ -32,7 +38,7 @@ public class EmpresaMemoria {
         }
         if (empresaParaRemover != null) {
             listaDeEmpresas.remove(empresaParaRemover);
-            System.out.println("A empresa " + empresaParaRemover + "foi removida do sistema com sucesso!");
+            System.out.println(empresaParaRemover + " foi removida do sistema com sucesso!");
             return;
         } else {
             System.out.println("Empresa não localizada com esse CNPJ.");

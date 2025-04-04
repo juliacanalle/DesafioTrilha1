@@ -41,8 +41,24 @@ public class EmpresaService {
         }
     }
 
-    public List<Empresa> listarEmpresas() {
-        return empresaMemoria.listarEmpresas();
+    public void removerEmpresa(String cnpj) {
+        empresaMemoria.removerEmpresa(cnpj);
+    }
+
+    public Empresa buscarPorCnpj(String cnpj) {
+        return empresaMemoria.buscarPorCnpj(cnpj);
+    }
+
+    public void listarEmpresas() {
+        List<Empresa> empresas = empresaMemoria.listarEmpresas();
+        if (empresas.isEmpty()) {
+            System.out.println("Nenhuma empresa cadastrada no sistema.");
+        } else {
+            System.out.println("Empresas cadastradas:");
+            for (Empresa empresa : empresas) {
+                System.out.println(empresa);
+            }
+        }
     }
 
 }

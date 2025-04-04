@@ -25,7 +25,7 @@ public class ColaboradorMemoria {
         Colaborador colaboradorParaRemover = buscarPorMatricula(empresa, matricula);
         if (colaboradorParaRemover != null) {
             empresa.getListaDeColaboradores().remove(colaboradorParaRemover);
-            System.out.println("Colaborador " + colaboradorParaRemover + "removido com sucesso!");
+            System.out.println("Colaborador " + colaboradorParaRemover + " removido com sucesso!");
             return;
         } else {
             System.out.println("Colaborador não encontrado com essa matrícula!");

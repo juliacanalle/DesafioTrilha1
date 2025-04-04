@@ -21,6 +21,10 @@ public class ColaboradorService {
         this.empresaMemoria = empresaMemoria;
     }
 
+    public void cadastrarColaborador(Empresa empresa, Colaborador colaborador) {
+        colaboradorMemoria.cadastrarColaborador(empresa, colaborador);
+    }
+
     public boolean validarMatriculaDuplicada(Empresa empresa, String matricula) {
         for (Colaborador colaborador : empresa.getListaDeColaboradores()) {
             if (colaborador.getMatricula().equalsIgnoreCase(matricula))
@@ -29,7 +33,7 @@ public class ColaboradorService {
         return false;
     }
 
-    private Colaborador localizarColaborador(Empresa empresa, String matricula) {
+    public Colaborador localizarColaborador(Empresa empresa, String matricula) {
         Colaborador colaboradorEncontrado = colaboradorMemoria.buscarPorMatricula(empresa, matricula);
         return colaboradorEncontrado;
     }
@@ -61,7 +65,7 @@ public class ColaboradorService {
         Colaborador colaboradorEncontrado = localizarColaborador(empresa, matricula);
         if (colaboradorEncontrado != null) {
             colaboradorEncontrado.setIdade(idade);
-            System.out.println("Idade com sucesso: " + idade + " anos.");
+            System.out.println("Idade atualizada com sucesso: " + idade + " anos.");
         } else {
             System.out.println("Colaborador não encontrado com essa matrícula!");
         }
@@ -71,7 +75,7 @@ public class ColaboradorService {
         Colaborador colaboradorEncontrado = localizarColaborador(empresa, matricula);
         if (colaboradorEncontrado != null) {
             colaboradorEncontrado.setDepartamento(departamento);
-            System.out.println("Sucesso! Agora o colaborador " + colaboradorEncontrado + " pertence ao departamento :" + departamento + ".");
+            System.out.println("Sucesso! Cadastrado atualizado:" + colaboradorEncontrado);
         } else {
             System.out.println("Colaborador não encontrado com essa matrícula!");
         }
@@ -87,6 +91,22 @@ public class ColaboradorService {
         return empresa.getListaDeColaboradores().stream()
                 .filter(colaborador -> colaborador.getDepartamento().equalsIgnoreCase(departamento))
                 .collect(Collectors.toList());
+    }
+
+    public void removeColaborador(Empresa empresa, String matricula) {
+        colaboradorMemoria.removeColaborador(empresa, matricula);
+    }
+
+    public void listarTodosColaboradores(Empresa empresa) {
+        List<Colaborador> listaDeColaboradoresGeral = empresa.getListaDeColaboradores();
+        if (listaDeColaboradoresGeral.isEmpty()) {
+            System.out.println("Não há colaboradores cadastrados nessa empresa!");
+        } else {
+            System.out.println("Colaboradores da empresa " + empresa.getNomeFantasia() + ":");
+            for (Colaborador colaborador : listaDeColaboradoresGeral) {
+                System.out.println(colaborador);
+            }
+        }
     }
 }
 

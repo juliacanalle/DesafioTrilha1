@@ -6,10 +6,11 @@ public class Colaborador extends Pessoa {
     int idade;
     String departamento;
 
-    public Colaborador(String nome, String id, int idade) {
+    public Colaborador(String nome, String matricula, int idade, String departamento) {
         super(nome);
-        this.matricula = id;
+        this.matricula = matricula;
         this.idade = idade;
+        this.departamento = departamento;
     }
 
     public String getMatricula() {
@@ -45,7 +46,7 @@ public class Colaborador extends Pessoa {
         return "Nome: " + nome +
                 " | Idade: " + idade +
                 " (" + (isMaiorDeIdade() ? "Maior de idade" : "Menor de idade") + ")" +
-                " | ID: " + matricula +
+                " | Matrícula: " + matricula +
                 "| Departamento: " + departamento;
     }
 }
